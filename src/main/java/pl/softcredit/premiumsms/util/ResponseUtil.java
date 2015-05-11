@@ -16,7 +16,7 @@ public class ResponseUtil {
         String[] response = stringResponse.split("\n");
 
         VerificationStatus verificationStatus =
-                VerificationStatus.CACHE_BY_VALUE.get(Integer.parseInt(response[0]));
+                VerificationStatus.CACHE_BY_CODE.get(Integer.parseInt(response[0]));
 
         ResponseDTO responseDTO = null;
 

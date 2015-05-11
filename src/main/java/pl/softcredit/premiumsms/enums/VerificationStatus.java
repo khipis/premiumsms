@@ -15,12 +15,12 @@ public enum VerificationStatus {
 
     private int statusCode;
 
-    public static final Map<Integer, VerificationStatus> CACHE_BY_VALUE =
+    public static final Map<Integer, VerificationStatus> CACHE_BY_CODE =
             new HashMap<Integer, VerificationStatus>();
 
     static {
         for (VerificationStatus verificationStatus : VerificationStatus.values()) {
-            CACHE_BY_VALUE.put(verificationStatus.statusCode, verificationStatus);
+            CACHE_BY_CODE.put(verificationStatus.statusCode, verificationStatus);
         }
     }
 
