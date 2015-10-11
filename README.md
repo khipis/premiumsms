@@ -6,14 +6,14 @@ Library which integrates with premium-sms : https://platnosci-online.pl/panel.ht
 
 Usage example:
 
-           ConfigDTO config = ConfigBuilder.instance()
+           Config config = ConfigBuilder.instance()
                    .key("YOUR KEY")
                    .partnerId("YOUR PARTNER ID")
                     .url("https://platnosci-online.pl/sms_check.php")
                    .build();
             
     
-            CodeQueryDTO codeQuery = CodeQueryBuilder.instance().suffix("YOUR SUFFIX").code(
+            CodeQuery codeQuery = CodeQueryBuilder.instance().suffix("YOUR SUFFIX").code(
                     "USER ENTERED CODE").cost(100).build();
     
             CodeVerifier verifier = new CodeVerifier(config);
