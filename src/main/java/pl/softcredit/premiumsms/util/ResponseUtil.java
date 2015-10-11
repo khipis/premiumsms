@@ -1,7 +1,7 @@
 package pl.softcredit.premiumsms.util;
 
 import pl.softcredit.premiumsms.builder.ResponseBuilder;
-import pl.softcredit.premiumsms.dto.ResponseDTO;
+import pl.softcredit.premiumsms.dto.Response;
 import pl.softcredit.premiumsms.enums.FailureReason;
 import pl.softcredit.premiumsms.enums.VerificationStatus;
 
@@ -10,15 +10,13 @@ import pl.softcredit.premiumsms.enums.VerificationStatus;
  *
  * @author Krzysztof Korolczuk {@literal <kkorolczuk@softcredit.pl>}
  */
-public class ResponseUtil {
+public final class ResponseUtil {
 
-    public static ResponseDTO parse(String stringResponse) {
+    public static Response parse(String stringResponse) {
         String[] response = stringResponse.split("\n");
 
         VerificationStatus verificationStatus =
                 VerificationStatus.CACHE_BY_CODE.get(Integer.parseInt(response[0]));
-
-        ResponseDTO responseDTO = null;
 
         if (verificationStatus.equals(VerificationStatus.SUCCESS)) {
 
@@ -38,8 +36,6 @@ public class ResponseUtil {
     }
 
     private ResponseUtil(){
-
     }
-
 
 }

@@ -1,5 +1,6 @@
 package pl.softcredit.premiumsms.enums;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public enum FailureReason {
     private int code;
 
     public static final Map<Integer, FailureReason> CACHE_BY_CODE =
-            new HashMap<Integer, FailureReason>();
+            Collections.unmodifiableMap(new HashMap<Integer, FailureReason>());
 
     static {
         for (FailureReason status : FailureReason.values()) {

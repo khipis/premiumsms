@@ -1,12 +1,11 @@
 package pl.softcredit.premiumsms;
 
-import pl.softcredit.premiumsms.dto.ConfigDTO;
-import pl.softcredit.premiumsms.dto.CodeQueryDTO;
-import pl.softcredit.premiumsms.dto.ResponseDTO;
+import pl.softcredit.premiumsms.dto.CodeQuery;
+import pl.softcredit.premiumsms.dto.Config;
+import pl.softcredit.premiumsms.dto.Response;
 import pl.softcredit.premiumsms.enums.VerificationStatus;
 import pl.softcredit.premiumsms.exception.PremiumSmsException;
 import pl.softcredit.premiumsms.provider.ServerResponseProvider;
-import pl.softcredit.premiumsms.provider.strategy.PlatnosciOnlineResponseProvider;
 import pl.softcredit.premiumsms.util.ResponseUtil;
 import pl.softcredit.premiumsms.util.SignatureUtil;
 
@@ -17,24 +16,18 @@ import java.security.NoSuchAlgorithmException;
  *
  * @author Krzysztof Korolczuk {@literal <kkorolczuk@softcredit.pl>}
  */
-public class CodeVerifier  {
+public final class CodeVerifier  {
 
-    private ConfigDTO config;
-    private ServerResponseProvider responseProvider;
+    private final Config config;
+    private final ServerResponseProvider responseProvider;
 
-    public CodeVerifier(ServerResponseProvider responseProvider, ConfigDTO config) {
+    public CodeVerifier(ServerResponseProvider responseProvider, Config config) {
         this.responseProvider = responseProvider;
         this.config = config;
         responseProvider.setConfig(config);
     }
 
-    public CodeVerifier(ConfigDTO config) {
-        this.responseProvider = new PlatnosciOnlineResponseProvider();
-        this.config = config;
-        responseProvider.setConfig(config);
-    }
-
-    public ResponseDTO verify(CodeQueryDTO codeQuery) throws PremiumSmsException {
+    public Response verify(CodeQuery codeQuery) throws PremiumSmsException {
 
         String response = responseProvider.getResponse(codeQuery);
 
@@ -45,12 +38,12 @@ public class CodeVerifier  {
             throw new PremiumSmsException("Problem with signature computing: " + e.getMessage());
         }
 
-        ResponseDTO responseDTO = ResponseUtil.parse(response);
+        Response responseDTO = ResponseUtil.parse(response);
 
         if (responseDTO.getVerificationStatus().equals(VerificationStatus.SUCCESS)) {
             boolean signatureCorrect = computedSignature.equals(responseDTO.getSignature());
             if (!signatureCorrect) {
-                responseDTO.setVerificationStatus(VerificationStatus.SUCCESS_BAD_SIGNATURE);
+                return new Response(responseDTO);
             }
         }
 

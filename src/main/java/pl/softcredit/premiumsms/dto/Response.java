@@ -4,31 +4,34 @@ import pl.softcredit.premiumsms.enums.FailureReason;
 import pl.softcredit.premiumsms.enums.VerificationStatus;
 
 /**
- * Class ResponseDTO, data transfer object for server response
+ * Class Response, data transfer object for server response
  *
  * @author Krzysztof Korolczuk {@literal <kkorolczuk@softcredit.pl>}
  */
-public class ResponseDTO {
+public final class Response {
 
-    private VerificationStatus verificationStatus;
-    private FailureReason failureReason;
-    private String signature;
-    private int cost;
+    private final VerificationStatus verificationStatus;
+    private final FailureReason failureReason;
+    private final String signature;
+    private final int cost;
 
-    public ResponseDTO(VerificationStatus verificationStatus, FailureReason failureReason,
-                       String signature, int cost) {
+    public Response(VerificationStatus verificationStatus, FailureReason failureReason,
+                         String signature, int cost) {
         this.verificationStatus = verificationStatus;
         this.failureReason = failureReason;
         this.signature = signature;
         this.cost = cost;
     }
 
-    public VerificationStatus getVerificationStatus() {
-        return verificationStatus;
+    public Response(Response response) {
+        this.verificationStatus = response.getVerificationStatus();
+        this.failureReason = response.getFailureReason();
+        this.signature = response.getSignature();
+        this.cost = response.getCost();
     }
 
-    public void setVerificationStatus(VerificationStatus verificationStatus) {
-        this.verificationStatus = verificationStatus;
+    public VerificationStatus getVerificationStatus() {
+        return verificationStatus;
     }
 
     public FailureReason getFailureReason() {

@@ -1,8 +1,8 @@
 package pl.softcredit.premiumsms.provider.strategy;
 
 import pl.softcredit.premiumsms.Constants;
-import pl.softcredit.premiumsms.dto.CodeQueryDTO;
-import pl.softcredit.premiumsms.dto.ConfigDTO;
+import pl.softcredit.premiumsms.dto.CodeQuery;
+import pl.softcredit.premiumsms.dto.Config;
 import pl.softcredit.premiumsms.exception.PremiumSmsException;
 import pl.softcredit.premiumsms.provider.ServerResponseProvider;
 
@@ -21,11 +21,10 @@ import java.net.URL;
 public class PlatnosciOnlineResponseProvider implements ServerResponseProvider {
 
     private String response;
-    private ConfigDTO config;
-
+    private Config config;
 
     @Override
-    public String getResponse(CodeQueryDTO codeQuery) throws PremiumSmsException {
+    public String getResponse(CodeQuery codeQuery) throws PremiumSmsException {
 
         try {
             HttpURLConnection connection = prepareConnection(config);
@@ -48,7 +47,7 @@ public class PlatnosciOnlineResponseProvider implements ServerResponseProvider {
         return response;
     }
 
-    private HttpURLConnection prepareConnection(ConfigDTO config) throws IOException {
+    private HttpURLConnection prepareConnection(Config config) throws IOException {
         HttpURLConnection connection =
                 (HttpURLConnection) new URL(config.getUrl()).openConnection();
         connection.setRequestMethod(Constants.POST_METHOD);
@@ -57,7 +56,7 @@ public class PlatnosciOnlineResponseProvider implements ServerResponseProvider {
     }
 
 
-    private String buildParameters(CodeQueryDTO query, ConfigDTO config) {
+    private String buildParameters(CodeQuery query, Config config) {
         return new StringBuilder().append(Constants.SMS_CODE_URL_PARAMETER)
                 .append(query.getCode())
                 .append(Constants.AND_OPERATOR)
@@ -80,7 +79,7 @@ public class PlatnosciOnlineResponseProvider implements ServerResponseProvider {
     }
 
     @Override
-    public void setConfig(ConfigDTO config) {
+    public void setConfig(Config config) {
         this.config = config;
     }
 

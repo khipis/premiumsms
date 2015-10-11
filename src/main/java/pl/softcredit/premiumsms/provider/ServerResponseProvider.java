@@ -1,8 +1,8 @@
 package pl.softcredit.premiumsms.provider;
 
 
-import pl.softcredit.premiumsms.dto.CodeQueryDTO;
-import pl.softcredit.premiumsms.dto.ConfigDTO;
+import pl.softcredit.premiumsms.dto.CodeQuery;
+import pl.softcredit.premiumsms.dto.Config;
 import pl.softcredit.premiumsms.exception.PremiumSmsException;
 
 /**
@@ -12,7 +12,7 @@ import pl.softcredit.premiumsms.exception.PremiumSmsException;
  */
 public interface ServerResponseProvider {
 
-    String getResponse(CodeQueryDTO codeQuery) throws PremiumSmsException;
+    String getResponse(CodeQuery codeQuery) throws PremiumSmsException;
 
-    void setConfig(ConfigDTO config);
+    void setConfig(Config config);
 }

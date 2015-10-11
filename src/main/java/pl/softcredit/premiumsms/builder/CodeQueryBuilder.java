@@ -1,19 +1,19 @@
 package pl.softcredit.premiumsms.builder;
 
-import pl.softcredit.premiumsms.dto.CodeQueryDTO;
+import pl.softcredit.premiumsms.dto.CodeQuery;
 
 /**
- * Class CodeQueryBuilder, builder for CodeQueryDTO
+ * Class CodeQueryBuilder, builder for CodeQuery
  *
  * @author Krzysztof Korolczuk {@literal <kkorolczuk@softcredit.pl>}
  */
-public class CodeQueryBuilder {
+public final class CodeQueryBuilder {
 
-    private Integer cost;
+    private int cost;
     private String suffix;
     private String code;
 
-    public CodeQueryBuilder cost(Integer cost) {
+    public CodeQueryBuilder cost(int cost) {
         this.cost = cost;
         return this;
     }
@@ -35,7 +35,7 @@ public class CodeQueryBuilder {
     private CodeQueryBuilder() {
     }
 
-    public CodeQueryDTO build() {
-        return new CodeQueryDTO(cost, suffix, code);
+    public CodeQuery build() {
+        return new CodeQuery(cost, suffix, code);
     }
 }

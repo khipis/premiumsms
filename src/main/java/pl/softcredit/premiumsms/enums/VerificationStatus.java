@@ -1,5 +1,6 @@
 package pl.softcredit.premiumsms.enums;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ public enum VerificationStatus {
     private int statusCode;
 
     public static final Map<Integer, VerificationStatus> CACHE_BY_CODE =
-            new HashMap<Integer, VerificationStatus>();
+            Collections.unmodifiableMap(new HashMap<Integer, VerificationStatus>());
 
     static {
         for (VerificationStatus verificationStatus : VerificationStatus.values()) {

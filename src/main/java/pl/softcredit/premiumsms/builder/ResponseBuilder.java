@@ -1,6 +1,6 @@
 package pl.softcredit.premiumsms.builder;
 
-import pl.softcredit.premiumsms.dto.ResponseDTO;
+import pl.softcredit.premiumsms.dto.Response;
 import pl.softcredit.premiumsms.enums.FailureReason;
 import pl.softcredit.premiumsms.enums.VerificationStatus;
 
@@ -36,8 +36,8 @@ public class ResponseBuilder {
         return this;
     }
 
-    public ResponseDTO build() {
-        return new ResponseDTO(verificationStatus, failureReason, signature, cost);
+    public Response build() {
+        return new Response(verificationStatus, failureReason, signature, cost);
     }
 
     public static ResponseBuilder instance() {

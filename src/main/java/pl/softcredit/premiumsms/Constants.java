@@ -5,7 +5,7 @@ package pl.softcredit.premiumsms;
  *
  * @author Krzysztof Korolczuk {@literal <kkorolczuk@softcredit.pl>}
  */
-public class Constants {
+public final class Constants {
 
     public static final String POST_METHOD = "POST";
     public static final String PARTNER_ID_URL_PARAMETER = "id=";
@@ -17,7 +17,6 @@ public class Constants {
             "https://platnosci-online.pl/sms_check.php";
 
     private Constants(){
-
     }
 
 }

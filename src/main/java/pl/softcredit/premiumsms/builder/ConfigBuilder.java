@@ -1,13 +1,13 @@
 package pl.softcredit.premiumsms.builder;
 
-import pl.softcredit.premiumsms.dto.ConfigDTO;
+import pl.softcredit.premiumsms.dto.Config;
 
 /**
- * Class ConfigBuilder, builder for ConfigDTO
+ * Class ConfigBuilder, builder for Config
  *
  * @author Krzysztof Korolczuk {@literal <kkorolczuk@softcredit.pl>}
  */
-public class ConfigBuilder {
+public final class ConfigBuilder {
 
     private String key = "";
     private String partnerId = "";
@@ -28,8 +28,8 @@ public class ConfigBuilder {
         return this;
     }
 
-    public ConfigDTO build() {
-        return new ConfigDTO(key, partnerId, url);
+    public Config build() {
+        return new Config(key, partnerId, url);
     }
 
     public static ConfigBuilder instance(){

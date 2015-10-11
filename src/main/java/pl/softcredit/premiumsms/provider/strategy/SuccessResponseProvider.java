@@ -1,7 +1,7 @@
 package pl.softcredit.premiumsms.provider.strategy;
 
-import pl.softcredit.premiumsms.dto.CodeQueryDTO;
-import pl.softcredit.premiumsms.dto.ConfigDTO;
+import pl.softcredit.premiumsms.dto.CodeQuery;
+import pl.softcredit.premiumsms.dto.Config;
 import pl.softcredit.premiumsms.exception.PremiumSmsException;
 import pl.softcredit.premiumsms.provider.ServerResponseProvider;
 
@@ -12,8 +12,6 @@ import pl.softcredit.premiumsms.provider.ServerResponseProvider;
  */
 public class SuccessResponseProvider implements ServerResponseProvider {
 
-    private String response;
-    private ConfigDTO config;
     private String gross;
     private String signature;
 
@@ -23,14 +21,13 @@ public class SuccessResponseProvider implements ServerResponseProvider {
     }
 
     @Override
-    public String getResponse(CodeQueryDTO codeQuery) throws PremiumSmsException {
+    public String getResponse(CodeQuery codeQuery) throws PremiumSmsException {
         return "1\n" + gross + "\n" + signature;
     }
 
     @Override
-    public void setConfig(ConfigDTO config) {
+    public void setConfig(Config config) {
 
     }
-
 
 }

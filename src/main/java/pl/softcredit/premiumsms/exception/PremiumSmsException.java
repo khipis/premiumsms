@@ -6,21 +6,13 @@ package pl.softcredit.premiumsms.exception;
  *
  * @author Krzysztof Korolczuk {@literal <kkorolczuk@softcredit.pl>}
  */
-public class PremiumSmsException extends Exception {
+public final class PremiumSmsException extends Exception {
 
     private String message = null;
-
-    public PremiumSmsException() {
-        super();
-    }
 
     public PremiumSmsException(String message) {
         super(message);
         this.message = message;
-    }
-
-    public PremiumSmsException(Throwable cause) {
-        super(cause);
     }
 
     @Override
