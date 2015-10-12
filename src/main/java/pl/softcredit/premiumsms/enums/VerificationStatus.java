@@ -14,18 +14,19 @@ public enum VerificationStatus {
     SUCCESS(1),
     SUCCESS_BAD_SIGNATURE(2);
 
-    private int statusCode;
+    private int code;
 
-    public static final Map<Integer, VerificationStatus> CACHE_BY_CODE =
-            Collections.unmodifiableMap(new HashMap<Integer, VerificationStatus>());
+    public static final Map<Integer, VerificationStatus> CACHE_BY_CODE;
 
     static {
+        Map<Integer, VerificationStatus> valuesMap = new HashMap<>();
         for (VerificationStatus verificationStatus : VerificationStatus.values()) {
-            CACHE_BY_CODE.put(verificationStatus.statusCode, verificationStatus);
+            valuesMap.put(verificationStatus.code, verificationStatus);
         }
+        CACHE_BY_CODE = Collections.unmodifiableMap(valuesMap);
     }
 
     VerificationStatus(int statusCode) {
-        this.statusCode = statusCode;
+        this.code = statusCode;
     }
 }

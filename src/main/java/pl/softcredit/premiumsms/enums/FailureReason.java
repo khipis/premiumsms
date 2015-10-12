@@ -18,13 +18,14 @@ public enum FailureReason {
 
     private int code;
 
-    public static final Map<Integer, FailureReason> CACHE_BY_CODE =
-            Collections.unmodifiableMap(new HashMap<Integer, FailureReason>());
+    public static final Map<Integer, FailureReason> CACHE_BY_CODE;
 
     static {
+        Map<Integer, FailureReason> valuesMap = new HashMap<>();
         for (FailureReason status : FailureReason.values()) {
-            CACHE_BY_CODE.put(status.code, status);
+            valuesMap.put(status.code, status);
         }
+        CACHE_BY_CODE = Collections.unmodifiableMap(valuesMap);
     }
 
     FailureReason(int code) {
