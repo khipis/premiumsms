@@ -9,9 +9,9 @@ import pl.softcredit.premiumsms.dto.Config;
  */
 public final class ConfigBuilder {
 
-    private String key = "";
-    private String partnerId = "";
-    private String url = "";
+    private String key;
+    private String partnerId;
+    private String url;
 
     public ConfigBuilder key(String key) {
         this.key = key;

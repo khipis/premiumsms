@@ -6,7 +6,6 @@ import pl.softcredit.premiumsms.dto.Config;
 import pl.softcredit.premiumsms.exception.PremiumSmsException;
 import pl.softcredit.premiumsms.provider.ServerResponseProvider;
 
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -57,14 +56,9 @@ public class PlatnosciOnlineResponseProvider implements ServerResponseProvider {
 
 
     private String buildParameters(CodeQuery query, Config config) {
-        return new StringBuilder().append(Constants.SMS_CODE_URL_PARAMETER)
-                .append(query.getCode())
-                .append(Constants.AND_OPERATOR)
-                .append(Constants.PARTNER_ID_URL_PARAMETER)
-                .append(config.getPartnerId())
-                .append(Constants.AND_OPERATOR)
-                .append(Constants.SUFFIX_URL_PARAMETER)
-                .append(query.getSuffix()).toString();
+        return Constants.SMS_CODE_URL_PARAMETER + query.getCode() + Constants.AND_OPERATOR
+               + Constants.PARTNER_ID_URL_PARAMETER + config.getPartnerId() + Constants.AND_OPERATOR
+               + Constants.SUFFIX_URL_PARAMETER + query.getSuffix();
     }
 
     private String readStream(DataInputStream dataInputStream) throws IOException {
