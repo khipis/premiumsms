@@ -12,7 +12,6 @@ import pl.softcredit.premiumsms.provider.ServerResponseProvider;
 import pl.softcredit.premiumsms.provider.strategy.PlatnosciOnlineResponseProvider;
 import pl.softcredit.premiumsms.provider.strategy.SuccessResponseProvider;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static pl.softcredit.premiumsms.Mocks.INVALID_CODE;
 import static pl.softcredit.premiumsms.Mocks.ONE_PLN_GROSS_VALUE;
 import static pl.softcredit.premiumsms.Mocks.VALID_CODE_1_PLN;
@@ -38,8 +37,9 @@ public class CodeVerifier1PLNTest {
                 new PlatnosciOnlineResponseProvider(), VALID_CODE_1_PLN);
 
         softAssertion = new SoftAssertions();
-        assertThat(response.getCost()).isEqualTo(ONE_PLN_GROSS_VALUE);
-        assertThat(response.getVerificationStatus()).isEqualTo(SUCCESS);
+        softAssertion.assertThat(response.getCost()).isEqualTo(ONE_PLN_GROSS_VALUE);
+        softAssertion.assertThat(response.getVerificationStatus()).isEqualTo(SUCCESS);
+        softAssertion.assertAll();
 
     }
 
@@ -50,8 +50,9 @@ public class CodeVerifier1PLNTest {
                                             VALID_SIGNATURE_1_PLN), VALID_CODE_1_PLN);
 
         softAssertion = new SoftAssertions();
-        assertThat(response.getCost()).isEqualTo(ONE_PLN_GROSS_VALUE);
-        assertThat(response.getVerificationStatus()).isEqualTo(SUCCESS);
+        softAssertion.assertThat(response.getCost()).isEqualTo(ONE_PLN_GROSS_VALUE);
+        softAssertion.assertThat(response.getVerificationStatus()).isEqualTo(SUCCESS);
+        softAssertion.assertAll();
     }
 
     @Test
@@ -85,9 +86,10 @@ public class CodeVerifier1PLNTest {
 
     private void invalidResponseAssert(Response response, FailureReason invalidPartnerId) {
         softAssertion = new SoftAssertions();
-        assertThat(response.getCost()).isEqualTo(0);
-        assertThat(response.getVerificationStatus()).isEqualTo(FAILURE);
-        assertThat(response.getFailureReason()).isEqualTo(invalidPartnerId);
+        softAssertion.assertThat(response.getCost()).isEqualTo(0);
+        softAssertion.assertThat(response.getVerificationStatus()).isEqualTo(FAILURE);
+        softAssertion.assertThat(response.getFailureReason()).isEqualTo(invalidPartnerId);
+        softAssertion.assertAll();
 
     }
 
